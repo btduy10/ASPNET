@@ -1,0 +1,20 @@
+# ===== Visual Studio / ASP.NET =====
+.vs/
+bin/
+obj/
+PrecompiledWeb/
+*.user
+*.suo
+*.cache
+packages/
+
+# ===== File tạm của Word / PowerPoint =====
+~$*
+
+# ===== Bản nén trùng với thư mục mã nguồn =====
+WebLinhKien.zip
+patch_*.zip
+
+# ===== Hệ điều hành =====
+Thumbs.db
+desktop.ini
