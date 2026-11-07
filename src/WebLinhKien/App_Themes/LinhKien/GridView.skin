@@ -1,0 +1,11 @@
+﻿<%--
+  Skin mặc định cho GridView và DetailsView (Chương 7 - Bài 2 - II. Themes)
+  Mọi GridView trong website tự động nhận định dạng này.
+--%>
+<asp:GridView runat="server" CssClass="luoi" GridLines="None" CellPadding="0"
+    BorderStyle="None" EmptyDataText="Không có dữ liệu.">
+    <SelectedRowStyle CssClass="dong-chon" />
+    <PagerStyle CssClass="trang" />
+</asp:GridView>
+
+<asp:DetailsView runat="server" CssClass="luoi" GridLines="None" BorderStyle="None" />

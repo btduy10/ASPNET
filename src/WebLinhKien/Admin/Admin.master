@@ -1,0 +1,39 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Admin.master.cs" Inherits="Admin_AdminMaster" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>Quản trị - Linh Kiện TVU</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="admin-than">
+            <div class="admin-menu">
+                <div class="logo"><%= CauHinh.Html("TenCuaHang1") + " " %><span><%= CauHinh.Html("TenCuaHang2") %></span><small>TRANG QUẢN TRỊ</small></div>
+                <!-- Menu đọc từ Web.sitemap thông qua lớp SiteMap (Chương 4 - II. Site Map) -->
+                <asp:HyperLink ID="hlTongQuan" runat="server" NavigateUrl="~/Admin/Default.aspx">Tổng quan</asp:HyperLink>
+                <asp:Repeater ID="rptMenu" runat="server">
+                    <ItemTemplate>
+                        <a href='<%# ResolveUrl(Eval("Url").ToString()) %>'
+                           class='<%# Eval("Url").ToString() == Request.Path ? "selected" : "" %>'><%# Eval("Title") %></a>
+                    </ItemTemplate>
+                </asp:Repeater>
+                <asp:HyperLink ID="hlWebsite" runat="server" NavigateUrl="~/Default.aspx">« Về trang bán hàng</asp:HyperLink>
+            </div>
+
+            <div class="admin-noidung">
+                <div class="admin-dau">
+                    <!-- Đường dẫn vị trí trang (SiteMapPath) -->
+                    <asp:SiteMapPath ID="smpViTri" runat="server" PathSeparator=" › " />
+                    <span>Quản trị viên: <b><asp:Label ID="lblHoTen" runat="server"></asp:Label></b>
+                        &nbsp;|&nbsp;
+                        <asp:LinkButton ID="lbtDangXuat" runat="server" CausesValidation="false" OnClick="lbtDangXuat_Click">Đăng xuất</asp:LinkButton>
+                    </span>
+                </div>
+                <asp:ContentPlaceHolder ID="AdminContent" runat="server"></asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

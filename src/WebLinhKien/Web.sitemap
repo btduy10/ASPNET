@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Sơ đồ website khu vực quản trị (Chương 4 - II. Site Map) -->
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="~/Admin/Default.aspx" title="Tổng quan" description="Trang tổng quan quản trị">
+    <siteMapNode url="~/Admin/QLLoaiSP.aspx"    title="Loại sản phẩm"  description="Quản lý loại sản phẩm" />
+    <siteMapNode url="~/Admin/QLHangSX.aspx"    title="Hãng sản xuất"  description="Quản lý hãng sản xuất" />
+    <siteMapNode url="~/Admin/QLSanPham.aspx"   title="Sản phẩm"       description="Quản lý sản phẩm" />
+    <siteMapNode url="~/Admin/QLDonHang.aspx"   title="Đơn hàng"       description="Quản lý đơn hàng" />
+    <siteMapNode url="~/Admin/QLNguoiDung.aspx" title="Người dùng"     description="Quản lý người dùng" />
+    <siteMapNode url="~/Admin/ThongKe.aspx"     title="Thống kê"       description="Báo cáo thống kê" />
+    <siteMapNode url="~/Admin/QLCauHinh.aspx"   title="Cấu hình website" description="Thông tin hiển thị trên website" />
+  </siteMapNode>
+</siteMap>

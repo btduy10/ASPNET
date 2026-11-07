@@ -1,0 +1,227 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+<%@ Register Src="~/UserControls/ucDanhMuc.ascx" TagPrefix="uc" TagName="DanhMuc" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>Linh Kiện TVU - Linh kiện điện tử, Arduino, ESP32, cảm biến</title>
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <!-- ===== Phần đầu trang: đứng yên khi cuộn (position: sticky) ===== -->
+        <div class="dau-trang">
+        <!-- ===== Thanh trên cùng: thông tin đăng nhập ===== -->
+        <div class="header-top">
+            <div class="khung">
+                <span>Hotline: <%= CauHinh.Html("Hotline") %> &nbsp;|&nbsp; <%= CauHinh.Html("ThongBaoDauTrang") %></span>
+                <span>
+                    <asp:PlaceHolder ID="phChuaDangNhap" runat="server">
+                        <asp:HyperLink ID="hlDangNhap" runat="server" NavigateUrl="~/DangNhap.aspx">Đăng nhập</asp:HyperLink>
+                        <asp:HyperLink ID="hlDangKy" runat="server" NavigateUrl="~/DangKy.aspx">Đăng ký</asp:HyperLink>
+                    </asp:PlaceHolder>
+                    <asp:PlaceHolder ID="phDaDangNhap" runat="server" Visible="false">
+                        Xin chào, <b><asp:Label ID="lblHoTen" runat="server"></asp:Label></b>
+                        <asp:HyperLink ID="hlQuanTri" runat="server" NavigateUrl="~/Admin/Default.aspx" Visible="false">Trang quản trị</asp:HyperLink>
+                        <asp:HyperLink ID="hlDonHang" runat="server" NavigateUrl="~/DonHangCuaToi.aspx">Đơn hàng của tôi</asp:HyperLink>
+                        <asp:LinkButton ID="lbtDangXuat" runat="server" CausesValidation="false" OnClick="lbtDangXuat_Click">Đăng xuất</asp:LinkButton>
+                    </asp:PlaceHolder>
+                </span>
+            </div>
+        </div>
+
+        <!-- ===== Logo + ô tìm kiếm + giỏ hàng ===== -->
+        <div class="header-main">
+            <div class="khung">
+                <asp:HyperLink ID="hlLogo" runat="server" NavigateUrl="~/Default.aspx" CssClass="logo">
+                    <%= CauHinh.Html("TenCuaHang1") + " " %><span><%= CauHinh.Html("TenCuaHang2") %></span><small><%= CauHinh.Html("Slogan") %></small>
+                </asp:HyperLink>
+                <asp:Panel ID="pnlTimKiem" runat="server" CssClass="o-tim" DefaultButton="btnTim">
+                    <asp:TextBox ID="txtTuKhoa" runat="server" placeholder="Bạn cần tìm linh kiện gì? (VD: esp32, cảm biến, servo...)"></asp:TextBox>
+                    <asp:Button ID="btnTim" runat="server" Text="Tìm kiếm" CausesValidation="false" OnClick="btnTim_Click" />
+                </asp:Panel>
+                <asp:HyperLink ID="hlGioHang" runat="server" NavigateUrl="~/GioHang.aspx" CssClass="nut-gio">
+                    Giỏ hàng <b><asp:Label ID="lblSoLuongGio" runat="server" Text="0"></asp:Label></b>
+                </asp:HyperLink>
+            </div>
+        </div>
+
+        <!-- ===== Menu ngang ===== -->
+        <div class="menu-ngang">
+            <div class="khung">
+                <asp:HyperLink runat="server" NavigateUrl="~/Default.aspx">Trang chủ</asp:HyperLink>
+                <asp:HyperLink runat="server" NavigateUrl="~/DoiTac.aspx">Đối tác</asp:HyperLink>
+                <asp:HyperLink runat="server" NavigateUrl="~/GioiThieu.aspx">Giới thiệu</asp:HyperLink>
+                <asp:HyperLink runat="server" NavigateUrl="~/DonHangCuaToi.aspx">Tra cứu đơn hàng</asp:HyperLink>
+            </div>
+        </div>
+
+        </div>
+
+        <!-- ===== Thân trang: cột trái (User Control) + nội dung ===== -->
+        <div class="khung than-trang">
+            <div class="cot-trai" id="divCotTrai" runat="server">
+                <uc:DanhMuc ID="ucDanhMuc1" runat="server" />
+            </div>
+            <div class="cot-phai">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+            </div>
+        </div>
+
+        <!-- ===== Footer ===== -->
+        <div class="footer">
+            <!-- Hàng 1: 4 cột liên kết -->
+            <div class="khung footer-cot">
+                <div>
+                    <h4>CHÍNH SÁCH</h4>
+                    <a href="ChinhSach.aspx#giao-dich">Điều kiện giao dịch chung</a>
+                    <a href="ChinhSach.aspx#bao-mat">Chính sách bảo mật thông tin</a>
+                    <a href="ChinhSach.aspx#thanh-toan">Chính sách thanh toán</a>
+                    <a href="ChinhSach.aspx#doi-tra">Chính sách giao nhận, đổi trả và hoàn tiền</a>
+                </div>
+                <div>
+                    <h4>HỖ TRỢ</h4>
+                    <a href="ChinhSach.aspx#huong-dan">Hướng dẫn mua hàng</a>
+                    <a href="LienHe.aspx">Thông tin liên hệ</a>
+                    <a href="DonHangCuaToi.aspx">Tra cứu đơn hàng</a>
+                </div>
+                <div>
+                    <h4>TÀI KHOẢN</h4>
+                    <a href="DangKy.aspx">Đăng ký tài khoản</a>
+                    <a href="DangNhap.aspx">Đăng nhập tài khoản</a>
+                    <a href="GioHang.aspx">Giỏ hàng của bạn</a>
+                </div>
+                <div>
+                    <h4>THÔNG TIN</h4>
+                    <a href="Default.aspx">Trang chủ</a>
+                    <a href="SanPham.aspx">Sản phẩm</a>
+                    <a href="DoiTac.aspx">Đối tác</a>
+                    <a href="GioiThieu.aspx">Giới thiệu</a>
+                </div>
+            </div>
+
+            <!-- Hàng 2: giới thiệu ngắn + liên hệ + mạng xã hội -->
+            <div class="khung footer-duoi">
+                <div class="footer-gt">
+                    <div class="logo"><%= CauHinh.Html("TenCuaHang1") + " " %><span><%= CauHinh.Html("TenCuaHang2") %></span><small><%= CauHinh.Html("Slogan") %></small></div>
+                    <p><%= CauHinh.Html("GioiThieuNgan") %></p>
+                </div>
+                <div class="footer-lh">
+                    <h4>THÔNG TIN LIÊN HỆ</h4>
+                    <p><b>Địa chỉ:</b> <%= CauHinh.Cum("DiaChi") %></p>
+                    <p><b>Giờ làm việc:</b> <%= CauHinh.Cum("GioLamViec") %></p>
+                    <p><b>Hotline:</b> <%= CauHinh.Html("Hotline") %> &nbsp;|&nbsp; <b>Email:</b> <%= CauHinh.Html("Email") %></p>
+                </div>
+                <div class="footer-mxh">
+                    <h4>KẾT NỐI</h4>
+                    <!-- Chạy offline: các nút dẫn về trang Thông tin liên hệ -->
+                    <a href="LienHe.aspx" class="mxh mxh-fb">Facebook</a>
+                    <a href="LienHe.aspx" class="mxh mxh-zalo">Zalo</a>
+                    <a href="LienHe.aspx" class="mxh mxh-yt">YouTube</a>
+                </div>
+            </div>
+
+            <!-- Hàng 3: bản quyền + bộ đếm truy cập (biến Application - Global.asax) -->
+            <div class="footer-ban-quyen">
+                <div class="khung">
+                    <span><%= CauHinh.Html("BanQuyen") %></span>
+                    <span>Lượt truy cập: <b><asp:Label ID="lblLuotTruyCap" runat="server"></asp:Label></b>
+                        &nbsp;|&nbsp; Đang online: <b><asp:Label ID="lblDangOnline" runat="server"></asp:Label></b></span>
+                </div>
+            </div>
+        </div>
+        <!-- ===== Hộp thông báo "Thêm vào giỏ hàng" (hiện sau khi khách bấm biểu tượng giỏ) =====
+             EnableViewState="false": hộp chỉ hiện đúng 1 lần, lần postback sau tự ẩn -->
+        <asp:Panel ID="pnlGioPopup" runat="server" Visible="false" EnableViewState="false">
+            <div id="popupGio" class="popup-nen">
+                <div class="popup-hop">
+                    <asp:Panel ID="pnlPopupDau" runat="server" CssClass="popup-dau">
+                        <span class="bieu-tuong"><asp:Literal ID="litBieuTuong" runat="server" Text="&#10003;"></asp:Literal></span>
+                        <asp:Label ID="lblPopupTieuDe" runat="server"></asp:Label>
+                        <a href="#" class="popup-dong" title="Đóng" onclick="dongPopupGio(); return false;">&times;</a>
+                    </asp:Panel>
+                    <asp:PlaceHolder ID="phPopupSP" runat="server">
+                        <div class="popup-sp">
+                            <asp:Image ID="imgPopup" runat="server" />
+                            <div>
+                                <asp:Label ID="lblPopupTen" runat="server" CssClass="popup-ten"></asp:Label>
+                                <div class="popup-ma">Mã SP: <asp:Label ID="lblPopupMa" runat="server"></asp:Label></div>
+                                <asp:Label ID="lblPopupGia" runat="server" CssClass="popup-gia"></asp:Label>
+                            </div>
+                        </div>
+                    </asp:PlaceHolder>
+                    <div class="popup-thongtin"><asp:Literal ID="litPopupThongTin" runat="server"></asp:Literal></div>
+                    <div class="popup-nut">
+                        <a href="#" class="popup-tieptuc" onclick="dongPopupGio(); return false;">Tiếp tục mua hàng</a>
+                        <asp:HyperLink ID="hlPopupThanhToan" runat="server" NavigateUrl="~/DatHang.aspx" CssClass="popup-thanhtoan">Thanh toán ngay</asp:HyperLink>
+                    </div>
+                </div>
+            </div>
+        </asp:Panel>
+        <script type="text/javascript">
+            // Đóng hộp thông báo: bấm nút X, "Tiếp tục mua hàng", bấm ra ngoài hoặc phím Esc
+            function dongPopupGio() {
+                var p = document.getElementById('popupGio');
+                if (p) p.style.display = 'none';
+            }
+            document.addEventListener('click', function (e) { if (e.target && e.target.id === 'popupGio') dongPopupGio(); });
+            document.addEventListener('keydown', function (e) { if (e.key === 'Escape') dongPopupGio(); });
+        </script>
+        <!-- ===== Thẻ thông tin Zalo (mở khi bấm "Chat qua Zalo") – nội dung lấy từ tblCauHinh ===== -->
+        <div class="zl-nen" id="zaloPopup" onclick="if (event.target === this) dongZalo();">
+            <div class="zl-the">
+                <a href="#" class="zl-dong-nut" title="Đóng" onclick="dongZalo(); return false;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></svg></a>
+                <div class="zl-tren">
+                    <div class="zl-trai">
+                        <div class="zl-dau">
+                            <div class="zl-logo"><b><%= CauHinh.Html("TenCuaHang1") %></b><span><%= CauHinh.Html("TenCuaHang2") %></span></div>
+                            <div>
+                                <h3><%= CauHinh.Html("TenCuaHang1") + " " %><%= CauHinh.Html("TenCuaHang2") %></h3>
+                                <p><%= CauHinh.Html("Zalo_MoTa") %></p>
+                                <a href="<%= CauHinh.Url("Zalo") %>" target="_blank" class="zl-nhan-tin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Nhắn tin</a>
+                            </div>
+                        </div>
+                        <h4>Thông tin chi tiết</h4>
+                        <ul class="zl-ct">
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span><%= CauHinh.Cum("DiaChi") %></span></li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><a href="tel:<%= CauHinh.Url("Hotline") %>"><%= CauHinh.Html("Hotline") %></a></li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><%= CauHinh.TrangThaiMoCua() %></span></li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></svg><a href="<%= ResolveUrl("~/Default.aspx") %>"><%= Request.Url.GetLeftPart(UriPartial.Authority) + ResolveUrl("~/") %></a></li>
+                        </ul>
+                    </div>
+                    <div class="zl-qr">
+                        <div class="zl-qr-khung">
+                            <% if (CauHinh.Anh("Zalo_QR") != "") { %>
+                                <img src="<%= CauHinh.Anh("Zalo_QR") %>" alt="Mã QR Zalo" />
+                            <% } else { %>
+                                <span>Mã QR Zalo<br />sẽ cập nhật sau</span>
+                            <% } %>
+                        </div>
+                        <small>Mở Zalo, bấm quét QR để quét và xem trên điện thoại</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            function moZalo() {
+                document.getElementById('hoTroNoi').classList.remove('mo');
+                document.getElementById('zaloPopup').style.display = 'flex';
+                return false;
+            }
+            function dongZalo() { document.getElementById('zaloPopup').style.display = 'none'; }
+            document.addEventListener('keydown', function (e) { if (e.key === 'Escape') dongZalo(); });
+        </script>
+        <!-- ===== Nút hỗ trợ nổi góc phải: Chat qua Zalo / Thông tin cửa hàng ===== -->
+        <div class="ho-tro-noi" id="hoTroNoi">
+            <div class="ho-tro-menu">
+                <a href="#" onclick="return moZalo();"><span class="ht-icon ht-zalo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span>Chat qua Zalo</a>
+                <a href="LienHe.aspx"><span class="ht-icon ht-cuahang"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>Thông tin cửa hàng</a>
+            </div>
+            <a href="#" class="ho-tro-nut" title="Hỗ trợ" onclick="document.getElementById('hoTroNoi').classList.toggle('mo'); return false;">
+                <span class="ht-mo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span><span class="ht-dong"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></svg></span>
+            </a>
+        </div>
+    </form>
+</body>
+</html>
