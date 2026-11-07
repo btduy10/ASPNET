@@ -4,6 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta charset="utf-8" />
+    <!-- Hiển thị đúng tỉ lệ trên điện thoại (giao diện tự co giãn theo màn hình) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Quản trị - Linh Kiện TVU</title>
 </head>
 <body>
