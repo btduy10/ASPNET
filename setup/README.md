@@ -7,6 +7,7 @@
 | `QLLinhKien.sql` | **Cài mới.** Tạo CSDL QLLinhKien gồm 7 bảng, 2 thủ tục lưu trữ và dữ liệu thử: 8 loại, 9 hãng, 28 sản phẩm, 3 tài khoản, 8 đơn hàng, cấu hình website. Đây là dữ liệu dùng cho các kết quả trong báo cáo |
 | `CapNhat_DonHang.sql` | Chỉ dùng khi nâng cấp CSDL cũ: thêm cột HinhThucTT, EmailNhan |
 | `CapNhat_CauHinh.sql` | Chỉ dùng khi nâng cấp CSDL cũ: thêm bảng tblCauHinh |
+| `CapNhat_HinhAnh.sql` | Chỉ dùng khi nâng cấp CSDL cũ: đổi tên hình sản phẩm sang ảnh linh kiện thật (sp02.jpg … sp28.jpg) |
 | `SoDoTrienKhai.png` | Sơ đồ triển khai và kiến trúc hệ thống |
 
 ## Sơ đồ triển khai
