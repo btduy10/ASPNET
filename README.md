@@ -13,9 +13,9 @@ Công nghệ: ASP.NET Web Forms (C#, .NET Framework 4.8), ADO.NET, SQL Server. W
 | | |
 |---|---|
 | Sinh viên thực hiện | **Bùi Thanh Duy** |
-| MSSV / Lớp | ………… / ………… |
+| MSSV / Lớp | 470123068 / VX23TTK10 |
 | Email | btduy10@gmail.com |
-| Điện thoại | ………… |
+| Điện thoại | 0939940681 |
 | Giảng viên hướng dẫn | TS. Nguyễn Nhứt Lam |
 
 ## Cấu trúc repository
@@ -24,6 +24,7 @@ Công nghệ: ASP.NET Web Forms (C#, .NET Framework 4.8), ADO.NET, SQL Server. W
 ├── README.md            ← tập tin này
 ├── setup/               ← script tạo CSDL + dữ liệu thử, hướng dẫn cài đặt, sơ đồ triển khai
 ├── src/                 ← mã nguồn: WebLinhKien.sln + thư mục WebLinhKien (ASP.NET Web Site)
+├── progress-report/     ← báo cáo tiến độ thực hiện đồ án
 ├── thesis/
 │   ├── doc/             ← báo cáo, bìa, hướng dẫn (.docx) + ảnh chụp màn hình
 │   ├── pdf/             ← báo cáo, bìa (.pdf)
